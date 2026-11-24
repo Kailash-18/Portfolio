@@ -1,4 +1,6 @@
-import { Github, Linkedin, Mail, Terminal } from "lucide-react";
+"use client";
+
+import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { profile } from "../../lib/profile/resume";
 
@@ -10,9 +12,16 @@ export default function Navigation({ builds = false }: { builds?: boolean }) {
   return (
     <header className="portfolio-masthead">
       <div>
-        <Link className="masthead-home" href="/" aria-label="Portfolio home">
-          <Terminal size={23} aria-hidden="true" />
-        </Link>
+        <a className="masthead-home" href="#top" aria-label="Back to top" onClick={(event) => {
+          event.preventDefault();
+          window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+        }}>
+          <svg width="28" height="28" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <rect x="5" y="9" width="38" height="30" rx="5" />
+            <path d="m12 19 5 5-5 5m12 5h10" />
+            <path d="M24 19v10m8-10-8 6m3-2 5 6" opacity=".18" strokeWidth="1.5" />
+          </svg>
+        </a>
         <div className="intro-social">
           <Link className="masthead-tools" href={builds ? "/" : "/builds"}>{builds ? "Portfolio" : "What I Build"}</Link>
           <a href={profile.github} aria-label="GitHub" title="GitHub"><Github size={20} /></a>

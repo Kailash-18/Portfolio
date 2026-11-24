@@ -49,7 +49,7 @@
 .bento-card .bento-label { display: flex; align-items: center; gap: .55rem; margin: 0; font-size: 1rem; font-weight: 550; line-height: 1.4; letter-spacing: -.02em; }
 .bento-label svg { color: var(--b-accent); flex: none; }
 .bento-skills { position: relative; }
-.bento-skills { grid-column: span 3; order: 3; }
+.bento-skills { grid-column: span 4; order: 4; }
 .bento-bio { order: 1; }
 .bento-skill-groups, .bento-skill-notes { display: grid; }
 .bento-skill-groups > *, .bento-skill-notes > * { grid-area: 1 / 1; align-self: start; }
@@ -84,7 +84,17 @@
 .bento-pills button[aria-pressed="true"] { color: #afafed; border-color: #4b5272; background: #1e2131; }
 .bento-card .bento-skill-note { min-height: 3em; margin-top: .8rem; }
 .bento-skill-note strong { font-weight: 550; color: #d9d9e9; }
-.bento-github { grid-column: span 4; order: 2; display: grid; grid-template-columns: 1fr minmax(150px, .8fr); align-content: start; gap: 1.2rem 1.5rem; }
+.bento-github { grid-column: span 3; order: 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-content: start; gap: 1.2rem 1.5rem; }
+.bento-github .repo-feed { min-width: 0; overflow-wrap: anywhere; }
+.bento-github .bento-metrics { flex-wrap: wrap; }
+.bento-github { gap: .8rem 1.25rem; }
+.bento-github .repo-feed { gap: 0; }
+.bento-github .repo-feed a { min-height: 40px; padding: .3rem .5rem; }
+.bento-github .bento-languages { padding-top: .65rem; }
+.bento-skills, .bento-location { min-height: 290px; }
+.bento-skills .bento-categories { margin-top: 1.15rem; margin-bottom: 1rem; gap: .35rem 1.2rem; }
+.bento-skills .bento-categories button { font-size: 1rem; padding: .55rem 0 .75rem; }
+.bento-skills .bento-skill-note { max-width: 65ch; font-size: 1.08rem; line-height: 1.7; margin-top: 1rem; }
 .bento-pulse-header, .bento-languages { grid-column: 1/-1; }
 .bento-pulse-header { display: flex; align-items: center; justify-content: space-between; gap: .4rem; }
 .bento-data-source { color: var(--b-muted); font: .68rem var(--b-mono); }
@@ -97,8 +107,9 @@
 .repo-feed a:hover, .repo-feed a:focus-visible { background: #8d91ec17; border-color: #8d91ec64; }
 .repo-feed a strong, .repo-feed a span { pointer-events: none; }
 .bento-skills { background: linear-gradient(115deg, #11141d, #0e1017); border-color: var(--b-line); }
-.bento-skills .bento-label { font-size: 1rem; }
-.bento-skills .bento-pills button { min-height: 31px; font-size: .75rem; }
+.bento-skills .bento-label { font-size: 1.25rem; }
+.bento-skills .bento-pills { gap: .55rem; }
+.bento-skills .bento-pills button { min-height: 40px; padding: .5rem .85rem; font-size: .9rem; }
 .bento-activity figcaption {
   display: flex;
   justify-content: space-between;
@@ -121,7 +132,7 @@
 .bento-languages li i { width: .4rem; height: .4rem; border-radius: 50%; }
 .bento-languages li span { color: #9797b1; }
 .bento-location {
-  order: 4;
+  order: 3;
   position: relative;
   isolation: isolate;
   grid-column: span 2;
@@ -167,13 +178,13 @@
 @media (prefers-reduced-motion: reduce) { .bento-status i { animation: none; } }
 @media (max-width: 850px) {
   .bento-github { grid-template-columns: minmax(0, 1fr); }
-  .bento-skills, .bento-github { grid-column: span 4; }
   .bento-location { grid-column: span 2; }
   .bento-heatmap { grid-template-rows: repeat(4, 1fr); }
 }
 @media (max-width: 640px) {
   .bento-layout { grid-template-columns: 1fr; }
   .bento-layout .bento-card { grid-column: auto; }
+  .bento-skills, .bento-location { min-height: 0; }
   .bento-location { gap: 1.5rem; }
   .bento-clock time { font-size: 2rem; }
 }

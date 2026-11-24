@@ -69,7 +69,7 @@
 .pc-copy h3 { margin: .65rem 0 .6rem; width: 100%; font-size: clamp(1.32rem,2.3vw,1.85rem); line-height: 1.12; font-weight: 550; letter-spacing: -.045em; }
 .pc-copy h3 button { display: flex; align-items: center; justify-content: space-between; gap: .6em; width: 100%; padding: 0; background: transparent; color: inherit; border: 0; text-align: left; font: inherit; letter-spacing: inherit; cursor: pointer; }
 .pc-copy h3 button svg { flex-shrink: 0; color: #a5a5bb; }
-.pc-copy h3 button::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.project-stage .project-card { cursor: pointer; }
 .pc-copy p, .pd-content p { margin: 0; color: #b3b3c6; font-size: 1rem; line-height: 1.65; }
 .pc-stack { display: flex; flex-wrap: wrap; gap: .4rem; }
 .pc-bottom { display: flex; align-items: center; justify-content: space-between; gap: .5rem; width: 100%; margin-top: auto; padding-top: 1.2rem; }

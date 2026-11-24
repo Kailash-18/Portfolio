@@ -40,7 +40,11 @@ function tiltCard(event: PointerEvent<HTMLDivElement>) {
 export default function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void }) {
   return <div className="project-stage" onPointerMove={tiltCard} onPointerLeave={event => {
     for (const property of ["--tilt-x", "--tilt-y", "--spot-x", "--spot-y"]) event.currentTarget.style.removeProperty(property);
-  }}><article className="project-card">
+  }}><article className="project-card" onClick={event => {
+    if ((event.target as Element).closest("a, button")) return;
+    event.currentTarget.querySelector("button")?.focus({ preventScroll: true });
+    onOpen();
+  }}>
     <ProjectVisual project={project}/>
     <div className="pc-copy">
       <div className="pc-type"><span/>{project.category}</div>

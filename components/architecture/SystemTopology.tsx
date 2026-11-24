@@ -6,7 +6,7 @@ import "./system-scenes.css";
 
 const modes = {
   delivery: ["Release path", "Runtime signals"],
-  gitops: ["Reconciliation", "Cluster monitoring"],
+  gitops: ["Cluster monitoring", "Reconciliation"],
   assets: ["Geometry", "Finish & export"],
   qa: ["Capture", "Review a fix"],
   security: ["Firewall policy", "HTTP inspection", "Packet analysis", "Exposure review"],
@@ -14,7 +14,7 @@ const modes = {
 
 const captions = {
   delivery: ["Jenkins builds and tests the commit. A successful build supplies the container image for the Kubernetes rollout.", "Running pods expose metrics for Prometheus and Grafana. Splunk collects application logs."],
-  gitops: ["Argo CD renders the Helm chart from Git, compares desired and live state, and applies changes through the Kubernetes API.", "Prometheus collects cluster metrics for Grafana dashboards and sends firing alerts to Alertmanager."],
+  gitops: ["Prometheus collects cluster metrics for Grafana dashboards and sends firing alerts to Alertmanager.", "Argo CD renders the Helm chart from Git, compares desired and live state, and applies changes through the Kubernetes API."],
   assets: ["A text prompt reaches FastAPI. The pipeline generates geometry and reduces the mesh before material processing.", "UV coordinates place the PBR textures on the mesh. The WebGL viewer supports inspection before GLB or OBJ export."],
   qa: ["Playwright captures desktop and mobile screenshots alongside DOM snapshots for visual analysis.", "A proposed CSS change runs in isolation. Before-and-after evidence goes to a human reviewer."],
   security: ["Allowed-flow path under a stateful pass rule. A matching PF state carries the forwarding decision. On a miss, rule evaluation determines disposition and a stateful pass creates the entry for subsequent packets.", "Burp splits the browser-to-origin exchange into two transport sessions. Correlate the HTTP method, request target, and timestamp across the proxy boundary before attributing the origin response.", "In Wireshark, capture filters limit what enters the trace. Display filters narrow the recorded packets by address or protocol while preserving the original capture.", "Nmap provides the service inventory. I compare Nessus findings with the corresponding host and service before deciding what needs review."],
@@ -46,7 +46,7 @@ function Delivery({ alternate }: { alternate: boolean }) {
 }
 
 function GitOps({ alternate }: { alternate: boolean }) {
-  if (alternate) return <>
+  if (!alternate) return <>
     <text x="32" y="44" className="scene-kicker">KUBERNETES / OBSERVABILITY</text>
     <Trace d="M120 169 H299 Q351 169 401 99 H472 M299 169 Q351 169 401 241 H472"/>
     {[[99,169,"Cluster"],[300,169,"Prometheus"],[492,99,"Grafana"],[492,241,"Alertmanager"]].map(([x,y,label])=><g key={label}><circle cx={x} cy={y} r="22" className="scene-solid"/><circle cx={x} cy={y} r="7" fill="currentColor"/><Label x={Number(x)} y={Number(y)+48}>{label}</Label></g>)}

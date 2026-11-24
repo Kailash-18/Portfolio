@@ -162,7 +162,6 @@ export default function BentoGrid() {
           <p className="bento-bio-text">{profile.bio || "At IIIT Bhagalpur, I split my time between electronics and the software that runs on it."}</p>
           <p className="bento-bio-note">I write infrastructure changes in Terraform and track Kubernetes releases in Git.</p>
         </article>
-        <SkillPanel />
         <article className="bento-card bento-github">
           <div className="bento-pulse-header">
             <h3 className="bento-label"><Activity aria-hidden size={16} />Repository activity</h3>
@@ -184,6 +183,7 @@ export default function BentoGrid() {
           )}
         </article>
         <LocationPanel location={location} />
+        <SkillPanel />
       </div>
     </section>
   );
