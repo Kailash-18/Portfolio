@@ -1,0 +1,32 @@
+{
+  "name": "kailash-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "owner:access": "node scripts/owner-access.mjs",
+    "build": "next build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.0",
+    "@fontsource-variable/jetbrains-mono": "^5.2.0",
+    "@types/nodemailer": "^7.0.12",
+    "framer-motion": "^12.23.0",
+    "lucide-react": "^0.562.0",
+    "next": "^16.1.0",
+    "nodemailer": "^7.0.13",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.5.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.0"
+  }
+}
