@@ -1,0 +1,28 @@
+.access-page { width:min(calc(100% - 2 * var(--gutter)),39rem); margin:0 auto; padding:var(--section-space) 0; color:#f2f2f6; }
+.access-owner { width:min(100% - 2.5rem,48rem); }
+.access-back, .access-doc, .access-state h2, .access-actions, .access-primary, .access-secondary { display:flex; align-items:center; gap:.6rem; }
+.access-back { width:fit-content; color:#b7b7c9; font-size:.9rem; margin-bottom:1.5rem; }
+.access-paper { padding:clamp(1.4rem,5vw,3rem); border:1px solid #2e334a; border-radius:1rem; background:linear-gradient(135deg,#161823,#0f1118 70%); }
+.access-doc { color:#aeaec8; font: .85rem var(--font-mono); }
+.access-doc svg, .access-page h1 span { color:#9999e9; }
+.access-page h1 { font-size:clamp(2.25rem,6vw,3.6rem); font-weight:550; line-height:1.02; letter-spacing:-.065em; margin:1.5rem 0 1rem; }
+.access-paper p { color:#bbbbcb; line-height:1.65; margin:.75rem 0 1.25rem; }
+.access-paper code { overflow-wrap:anywhere; color:#dfdfed; }
+.access-paper form, .access-paper label { display:grid; gap:.45rem; }
+.access-paper form { gap:1rem; margin-top:1.5rem; }
+.access-paper label { color:#d0d0db; font-size:.9rem; }
+.access-paper input { width:100%; background:#0a0b11; border:1px solid #323852; border-radius:.4rem; color:#f1f1f5; padding:.7rem .85rem; }
+.access-primary, .access-secondary { width:fit-content; min-height:42px; padding:.55rem .9rem; border-radius:.45rem; font-weight:550; font-size:.9rem; }
+.access-primary { background:#a5a5ee; color:#101321; }
+.access-secondary { background:#181a26; border:1px solid #3f4353; color:#d9d9e3; }
+.access-primary:disabled,.access-secondary:disabled { opacity:.6; }
+.access-state { border-top:1px solid #2e334a; margin-top:1.5rem; padding:1.3rem 0; }
+.access-state h2, .access-list h2 { font-size:1.16rem; font-weight:600; letter-spacing:-.025em; }
+.access-state small,.access-metadata small { color:#b0b0c3; }
+.access-actions { flex-wrap:wrap; }
+.access-list { padding:0; margin:1.25rem 0 0; list-style:none; }
+.access-list li, .access-empty { border-top:1px solid #2c3147; padding:1.3rem 0; overflow-wrap:anywhere; }
+.access-identity { color:#bfbfcf; font-size:.94rem; margin-top:.2rem; }
+.access-metadata { display:flex; align-items:center; flex-wrap:wrap; gap:.6rem; margin:.7rem 0; }
+.access-metadata span { font:.76rem var(--font-mono); text-transform:capitalize; color:#c1c1ef; }
+.access-page p.access-error { color:#ffbba9; }
