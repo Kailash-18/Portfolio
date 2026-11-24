@@ -113,10 +113,11 @@ export const useGitHub = () => useContext(GitHubContext);
 export function GitHubProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState(snapshot);
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    const timeout = window.setTimeout(() => controller.abort(), 12000);
     async function refresh() {
+      const controller = new AbortController();
+      const signal = controller.signal;
+      const timeout = window.setTimeout(() => controller.abort(), 12000);
+      try {
       const [profile, repos] = await Promise.all([
         request<Profile>("", signal),
         request<Repo[]>("/repos?sort=updated&per_page=10", signal),
@@ -137,9 +138,15 @@ export function GitHubProvider({ children }: { children: ReactNode }) {
       }));
       const events = await request<{ created_at: string }[]>("/events/public?per_page=100", signal);
       if (!signal.aborted) setData(previous => ({ ...previous, activity: recentActivity(events), activityAvailable: true }));
+      } catch {
+        // Keep the most recent successful data when GitHub rate limits or is unreachable.
+      } finally {
+        window.clearTimeout(timeout);
+      }
     }
-    refresh().catch(() => { /* Keep the last complete data set on rate limits or timeouts. */ }).finally(() => window.clearTimeout(timeout));
-    return () => { window.clearTimeout(timeout); controller.abort(); };
+    void refresh();
+    const interval = window.setInterval(() => { void refresh(); }, 5 * 60 * 1000);
+    return () => window.clearInterval(interval);
   }, []);
   return <GitHubContext.Provider value={data}>{children}</GitHubContext.Provider>;
 }
