@@ -14,7 +14,12 @@ export async function GET(request: NextRequest) {
   if (requesterStatus(session).status !== "approved") {
     return json({ error: "Enter your name and email at /resume to view the PDF." }, 403);
   }
-  const pdf = await readFile(path.join(process.cwd(), "private", "Kailash-Ambadipudi-Resume.pdf"));
+  let pdf: Buffer;
+  try {
+    pdf = await readFile(path.join(process.cwd(), "private", "Kailash-Ambadipudi-Resume.pdf"));
+  } catch {
+    return json({ error: "The résumé is not configured on this server." }, 503);
+  }
   if (request.method === "GET") after(() => notifyResumeView(session));
   return new Response(new Uint8Array(pdf), { headers: {
     ...privateHeaders, "Content-Type": "application/pdf",

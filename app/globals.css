@@ -17,6 +17,9 @@
   --panel-space: clamp(1rem, 2.25vw, 1.75rem);
   --page-rail: min(calc(100% - 2 * var(--gutter)), var(--width));
 }
+@media (min-width: 1024px) {
+  :root { --page-rail: min(calc(95% - 1.9 * var(--gutter)), calc(var(--width) * .95)); }
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { background: var(--page); color: #f1f1f5; font-family: "Inter Variable", Inter, Arial, sans-serif; margin: 0; -webkit-font-smoothing: antialiased; }

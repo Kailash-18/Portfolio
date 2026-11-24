@@ -4,7 +4,7 @@ import { profile } from "../profile/resume";
 
 export async function notifyResumeView(session?: string) {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, RESUME_ALERT_TO } = process.env;
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) return;
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD || !RESUME_ALERT_TO) return;
   const requestId = claimResumeView(session);
   if (!requestId) return;
 
