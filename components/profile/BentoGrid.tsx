@@ -2,8 +2,8 @@
 
 import { useEffect, useId, useState } from "react";
 import { Activity, ArrowUpRight, CircuitBoard, GitFork, Github, Globe2, MapPin, Star } from "lucide-react";
-import { useGitHub } from "../lib/github";
-import { profile as resumeProfile } from "../lib/resume";
+import { useGitHub } from "../../lib/projects/github";
+import { profile as resumeProfile } from "../../lib/profile/resume";
 import "./bento.css";
 
 const toolsets = {
@@ -41,6 +41,7 @@ const toolsets = {
     ["Traceroute", "Inspecting the hops along a network path."],
   ],
   "Security tools": [
+    ["Metasploit Framework", "Hands-on experience with Metasploit in penetration-testing practice."],
     ["Burp Suite", "Inspecting HTTP requests and responses in a local training environment."],
     ["OWASP Juice Shop", "Setting up a local web application security training environment."],
     ["Ettercap", "Studying local network traffic in an isolated virtual-machine lab."],

@@ -120,7 +120,7 @@ footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: s
 }
 
 /* The studio pairs an editorial title with a full-size interactive architecture model. */
-:root { --page:#0b0c11; --mint:#b4b4f1; --line:#272b3f; }
+:root { --page:#06080d; --mint:#b4b4f1; --line:#272b3f; }
 .site-header { background:rgba(12,16,15,.89); border-bottom:1px solid #ffffff1b; }
 .header-inner { min-height:77px; }
 .personal-mark { color:var(--mint); flex-shrink:0; }

@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Command, Search, X, CornerDownLeft, MapPin, Download, Copy, Github, Gamepad2 } from "lucide-react";
 import { navigation } from "./Navigation";
-import { profile } from "../lib/resume";
-import { copyEmail } from "./Contact";
+import { profile } from "../../lib/profile/resume";
+import { copyEmail } from "../portfolio/Contact";
 
 const commands = [
   ...navigation.map(([label,id]) => ({label, id, group:"Navigate", icon:MapPin})),

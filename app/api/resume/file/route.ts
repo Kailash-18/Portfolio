@@ -2,9 +2,9 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 import { NextRequest } from "next/server";
 import { after } from "next/server";
-import { notifyResumeView } from "../../../../lib/resume-notifications";
-import { requesterStatus, browserCookie } from "../../../../lib/resume-access";
-import { privateHeaders, json } from "../../../../lib/resume-http";
+import { notifyResumeView } from "../../../../lib/resume/resume-notifications";
+import { requesterStatus, browserCookie } from "../../../../lib/resume/resume-access";
+import { privateHeaders, json } from "../../../../lib/resume/resume-http";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";

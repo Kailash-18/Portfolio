@@ -57,7 +57,7 @@
 @media (max-width: 730px) {
   .single-flow > .contact-section { grid-template-columns: minmax(0, 1fr); }
 }
-body {background:#0d1120;color:#edf0fc}
+body {background:var(--page);color:#edf0fc}
 .site-header {background:#0b1020eb;border-bottom:1px solid #2b3149}
 .site-header .nameplate {font-size:1.35rem;font-weight:650;letter-spacing:-.055em;color:#f3f4ff}
 .site-header .brand-period {margin:0;color:#ae97ff}
@@ -86,7 +86,7 @@ body {background:#0d1120;color:#edf0fc}
 .intro {
   padding-top: clamp(2.25rem, 5.1vw, 5.25rem);
   border-bottom: 1px solid #29324a;
-  background: radial-gradient(ellipse at 95% 0%, #30254c 0%, transparent 62%), #101728;
+  background: radial-gradient(ellipse at 95% 0%, #20152e 0%, transparent 62%), #080b12;
 }
 .intro-grid {
   display: grid;
@@ -121,7 +121,7 @@ body {background:#0d1120;color:#edf0fc}
   padding: clamp(1.1rem, 2.65vw, 2.4rem);
   border: 1px solid #c5b9ff46;
   border-radius: 12px;
-  background: linear-gradient(135deg, #3d406db3, #141b30bc 68%);
+  background: linear-gradient(135deg, #24273db3, #0b101bbc 68%);
   box-shadow: inset 0 1px #e1daff25, 0 16px 44px #080c1b45;
   backdrop-filter: blur(16px) saturate(1.15);
 }
@@ -250,7 +250,7 @@ html:has(.portfolio-masthead) { scroll-padding-top: 90px; }
   }
 }
 .single-flow .project-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--grid-space); }
-.single-flow .project-card { background: #131927; border-radius: 10px; }
+.single-flow .project-card { background: #0c101a; border-radius: 10px; }
 .single-flow .project-card .case-art { height: clamp(125px, 13vw, 185px); }
 .single-flow .project-card .pc-copy { padding: var(--panel-space); }
 .single-flow .project-card .pc-type { color: #c7b6ec; }

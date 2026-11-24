@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUpRight, FileText, Layers3, Radio, X } from "lucide-react";
 import Link from "next/link";
-import { profile } from "../lib/resume";
-import Playground from "./Playground";
+import { profile } from "../../lib/profile/resume";
+import Playground from "../studio/Playground";
 import "./cover.css";
 
 const focusAreas = [

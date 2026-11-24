@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
-import { decide, endOwnerSession, isOwner, listRequests, ownerCookie, ownerMaxAge, redeemOwnerCode } from "../../../../lib/resume-access";
-import { json, readForm, sessionCookie } from "../../../../lib/resume-http";
+import { decide, endOwnerSession, isOwner, listRequests, ownerCookie, ownerMaxAge, redeemOwnerCode } from "../../../../lib/resume/resume-access";
+import { json, readForm, sessionCookie } from "../../../../lib/resume/resume-http";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

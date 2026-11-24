@@ -8,8 +8,8 @@ const spotlights = [
   {
     title: "Network visibility & assessment",
     icon: Network,
-    tools: ["OPNsense", "Wireshark", "Nmap", "Nessus", "Ettercap"],
-    description: "I study network behavior at three levels: OPNsense policy, Wireshark packet evidence, and Nmap service inventory. Nessus adds a separate view of potential exposure. I treat scanner findings as leads and keep traffic analysis in an isolated virtual network.",
+    tools: ["OPNsense", "Wireshark", "Nmap", "Nessus", "Metasploit", "Ettercap"],
+    description: "I compare OPNsense firewall rules with Wireshark captures, then check Nessus findings against the services Nmap identifies. My penetration-testing experience also includes Metasploit Framework.",
     link: "Explore security skills",
     href: "#security",
   },

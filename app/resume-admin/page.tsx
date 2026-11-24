@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ResumeOwner } from "../../components/ResumeAccess";
+import { ResumeOwner } from "../../components/resume/ResumeAccess";
 
 export const metadata: Metadata = { title: "Review résumé requests | Kailash Ambadipudi", robots: { index: false, follow: false } };
 

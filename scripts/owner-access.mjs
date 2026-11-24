@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import { issueOwnerCode } from "../lib/resume-access.ts";
+import { issueOwnerCode } from "../lib/resume/resume-access.ts";
 
 process.chdir(fileURLToPath(new URL("../", import.meta.url)));
 const origin = process.env.RESUME_ACCESS_ORIGIN || "http://localhost:3000";

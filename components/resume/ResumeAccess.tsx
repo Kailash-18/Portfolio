@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { ArrowLeft, Check, Clock3, FileText, KeyRound, LockKeyhole, RefreshCw } from "lucide-react";
-import type { AdminRecord, RequestStatus } from "../lib/resume-access";
+import type { AdminRecord, RequestStatus } from "../../lib/resume/resume-access";
 import "./resume-access.css";
 
 async function read<T>(endpoint: string, body?: object): Promise<T> {

@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail, Terminal } from "lucide-react";
 import Link from "next/link";
-import { profile } from "../lib/resume";
+import { profile } from "../../lib/profile/resume";
 
 export const navigation = [
   ["Studio", "home"], ["Work", "work"], ["Tools", "tools"], ["Profile", "about"], ["Experience", "experience"], ["Contact", "contact"],

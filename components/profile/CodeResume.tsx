@@ -1,5 +1,5 @@
 import { Award, BriefcaseBusiness, GraduationCap } from "lucide-react";
-import { experience, education, certifications } from "../lib/resume";
+import { experience, education, certifications } from "../../lib/profile/resume";
 import "./resume.css";
 function Timeline() {
   const [freelance] = experience;

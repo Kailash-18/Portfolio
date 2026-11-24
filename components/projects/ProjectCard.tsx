@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type PointerEvent } from "react";
 import { Server, Database, Activity, Box, Boxes, Braces, Check, Cloud, Eye, FileCode2, GitBranch, GitCommitHorizontal, Github, Globe, Grip, Hand, Layers3, Maximize2, Orbit, Radio, Scan, ShipWheel, Star, Terminal, Workflow, X } from "lucide-react";
-import type { Project } from "../lib/projects";
+import type { Project } from "../../lib/projects/projects";
 
 function ProjectVisual({ project }: { project: Project }) {
   const art = {

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/inter/wght.css";
 import "@fontsource-variable/jetbrains-mono/wght.css";
-import ScrollMotion from "../components/ScrollMotion";
+import ScrollMotion from "../components/navigation/ScrollMotion";
 import "./globals.css";
 
 export const metadata: Metadata = {

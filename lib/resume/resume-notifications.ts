@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import { claimResumeView, finishResumeView } from "./resume-access";
-import { profile } from "./resume";
+import { profile } from "../profile/resume";
 
 export async function notifyResumeView(session?: string) {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, RESUME_ALERT_TO } = process.env;

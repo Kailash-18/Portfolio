@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Check, Copy, Mail, PencilLine } from "lucide-react";
-import { profile } from "../lib/resume";
+import { profile } from "../../lib/profile/resume";
 
 export async function copyEmail() {
   await navigator.clipboard.writeText(profile.email);

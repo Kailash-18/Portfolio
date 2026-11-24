@@ -1,15 +1,15 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Hero from "./Hero";
-import Projects from "./Projects";
-import BentoGrid from "./BentoGrid";
-import CodeResume from "./CodeResume";
+import Projects from "../projects/Projects";
+import BentoGrid from "../profile/BentoGrid";
+import CodeResume from "../profile/CodeResume";
 import Contact from "./Contact";
-import SecurityShowcase from "./SecurityShowcase";
-import Tools from "./Tools";
-import Navigation from "./Navigation";
-import CommandPalette from "./CommandPalette";
-import {GitHubProvider} from "../lib/github";
+import SecurityShowcase from "../security/SecurityShowcase";
+import Tools from "../profile/Tools";
+import Navigation from "../navigation/Navigation";
+import CommandPalette from "../navigation/CommandPalette";
+import {GitHubProvider} from "../../lib/projects/github";
 export default function PortfolioPage(){
  const content = useRef<HTMLDivElement>(null);
 

@@ -13,7 +13,7 @@
   padding: var(--panel-space);
   border: 1px solid #39435f;
   border-radius: 12px;
-  background: linear-gradient(145deg, #1b253d, #141729);
+  background: linear-gradient(145deg, #121827, #0c0e17);
 }
 .tool-stage { min-width: 0; perspective: 1000px; }
 .tool-card::before {

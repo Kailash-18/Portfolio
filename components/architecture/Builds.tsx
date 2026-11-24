@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowDown, ArrowLeft, ArrowUpRight, Box, Cloud, GitBranch, Layers3, Pause, Play, ScanEye, ShieldCheck, Workflow } from "lucide-react";
-import Navigation from "./Navigation";
+import Navigation from "../navigation/Navigation";
 import SystemsOrbit from "./SystemsOrbit";
 import SystemTopology from "./SystemTopology";
 import CloudTopology from "./CloudTopology";
-import "./cover.css";
-import "./tools.css";
+import "../portfolio/cover.css";
+import "../profile/tools.css";
 import "./builds.css";
 
 const systems = [
@@ -24,7 +24,7 @@ const systems = [
   },
   {
     id: "security", name: "Security practice", short: "Security practice", icon: ShieldCheck, color: "#78e6bb",
-    description: "A reference architecture for stateful filtering and traffic attribution in a segmented VirtualBox network. Each view follows a different observation point, from the ingress interface to the application proxy.",
+    description: "My penetration-testing experience includes hands-on work with Metasploit Framework. This architecture follows traffic through a segmented VirtualBox network, from the firewall state table to the application proxy.",
     decision: "Correlate the transport five-tuple, direction, capture interface, and observation window. NAT can rewrite a tuple, and a proxy opens a second connection. Both boundaries matter when attributing traffic to a session.",
   },
   {

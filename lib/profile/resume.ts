@@ -42,7 +42,7 @@ export const skillGroups = [
   { category: "Networking", skills: ["VPC design", "Public and private subnets", "NAT Gateway", "Internet Gateway", "Route tables", "Security groups", "Network ACLs", "DNS", "Load balancers"] },
   { category: "Networking study", skills: ["Public and private IP addressing", "Subnet boundaries", "Routing", "OSI model", "TCP and UDP"] },
   { category: "Network tools", skills: ["OPNsense", "Wireshark", "Nmap", "Tenable Nessus", "PowerShell", "Traceroute"] },
-  { category: "Security tools", skills: ["Burp Suite", "OWASP Juice Shop", "Ettercap", "VirtualBox"] },
+  { category: "Security tools", skills: ["Metasploit Framework", "Burp Suite", "OWASP Juice Shop", "Ettercap", "VirtualBox"] },
   { category: "Monitoring & logging", skills: ["Prometheus", "Grafana", "Splunk", "ELK Stack", "CloudWatch", "Alertmanager"] },
   { category: "Security", skills: ["IAM roles and policies", "RBAC", "Secrets management", "SSL/TLS", "Network security"] },
   { category: "Build & web servers", skills: ["Maven", "SonarQube", "Apache Tomcat", "Nginx", "JFrog"] },

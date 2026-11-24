@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
-import { browserCookie, browserMaxAge, requesterStatus, submitRequest } from "../../../lib/resume-access";
-import { json, readForm, sessionCookie } from "../../../lib/resume-http";
+import { browserCookie, browserMaxAge, requesterStatus, submitRequest } from "../../../lib/resume/resume-access";
+import { json, readForm, sessionCookie } from "../../../lib/resume/resume-http";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
