@@ -1,0 +1,69 @@
+.scene-instrument {
+  --instrument-line: #8484a33b;
+  --instrument-ink: #e2e2e9;
+  --instrument-dim: #a2a2b9;
+  --instrument-accent: var(--mint, #9c9cec);
+  width: 100%;
+  min-width: 0;
+  color: var(--instrument-ink);
+  scroll-margin-top: 5rem;
+}
+.instrument-console {
+  width: 88%;
+  margin: .9rem auto 0;
+  border-top: 1px solid var(--instrument-line);
+}
+.instrument-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.instrument-tabs button {
+  display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+  min-height: 40px; border: 0; border-top: 2px solid transparent;
+  margin-top: -1px; padding: .65rem .25rem; background: transparent;
+  color: var(--instrument-dim); font: 470 .78rem/1.2 var(--font-mono, monospace);
+  transition: color .16s, border-color .16s;
+}
+.instrument-tabs button:hover { color: var(--instrument-ink); }
+.instrument-tabs button[aria-selected=true] {
+  color: var(--instrument-accent); border-top-color: var(--instrument-accent);
+  background: linear-gradient(180deg, #a5a5ee0b, transparent);
+}
+.instrument-console :focus-visible { outline: 2px solid var(--instrument-accent); outline-offset: 2px; }
+.instrument-panel {
+  padding: .8rem .2rem .2rem;
+  border-top: 1px solid var(--instrument-line);
+  color: var(--instrument-ink); font: .87rem/1.5 "Inter Variable", Inter, sans-serif;
+}
+.instrument-line, .instrument-field {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem .85rem;
+}
+.instrument-buttons, .instrument-best, .instrument-buttons button, .instrument-replay { display: inline-flex; align-items: center; gap: .38rem; }
+.instrument-best, .instrument-note { color: var(--instrument-dim); font-size: .77rem; }
+.instrument-metric { color: var(--instrument-accent); font: .78rem/1.5 var(--font-mono, monospace); }
+.instrument-prompt, .instrument-code { display: block; margin: .45rem 0 .55rem; color: var(--instrument-ink); }
+.instrument-prompt strong { font-weight: 560; }
+.instrument-code { color: #e0e0e7; font: .9rem/1.5 var(--font-mono, monospace); white-space: pre-wrap; overflow-wrap: anywhere; }
+.instrument-code .matched { color: #9292ea; }
+.instrument-code .mismatch { background: #774746; color: #fff; }
+.instrument-buttons { flex-wrap: wrap; }
+.instrument-buttons button, .instrument-replay {
+  min-height: 34px; padding: .35rem .53rem; color: var(--instrument-ink);
+  border-radius: .35rem; border: 1px solid var(--instrument-line); background: #13151e;
+  font: .76rem/1.2 var(--font-mono, monospace);
+}
+.instrument-buttons button:hover, .instrument-replay:hover, .instrument-buttons button[aria-pressed=true] {
+  color: var(--instrument-accent); border-color: #6d7492;
+}
+.instrument-buttons button[aria-disabled=true] { opacity: .62; }
+.instrument-buttons kbd { color: #a7a7bd; border-right: 1px solid var(--instrument-line); padding-right: .35rem; font: inherit; }
+.instrument-input {
+  color: var(--instrument-ink); width: 100%; min-height: 38px;
+  background: #0c0d13; border: 1px solid var(--instrument-line); border-radius: .35rem;
+  padding: .5rem .65rem; font: .875rem/1.4 var(--font-mono, monospace);
+}
+.instrument-input::placeholder { color: #9c9cb4; }
+.scene-instrument[data-mode=field] :is(.infra-canvas, .infra-fallback) { cursor: crosshair; touch-action: none; }
+@media (max-width:730px) {
+  .instrument-console { width: 98%; }
+  .instrument-tabs button { min-height: 44px; gap: .3rem; }
+  .instrument-input { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) { .instrument-tabs button { transition: none; } }

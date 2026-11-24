@@ -1,0 +1,11 @@
+.signal-art { position:relative; width:100%; margin:0; background:radial-gradient(ellipse at 45% 48%,#263a9130,transparent 62%),radial-gradient(ellipse at 70% 60%,#562b9230,transparent 55%); }
+.signal-art svg[role=img] { display:block; width:100%; overflow:visible; margin:6px 0; }
+.signal-tools { display:flex; justify-content:space-between; align-items:center; color:#bdc4ee; font:.76rem var(--font-mono); padding:0 3%; }
+.signal-tools span,.signal-tools button { display:flex; gap:.5rem; align-items:center; }
+.signal-tools button { border:1px solid #414869; padding:7px; border-radius:50%; }
+.signal-strand { animation:signal-breathe 6s ease-in-out infinite alternate; transform-origin:center; }
+.signal-packet { animation:signal-travel 5s linear infinite; }
+.signal-paused *, .signal-paused { animation-play-state:paused!important; }
+@keyframes signal-travel { to {stroke-dashoffset:-1000;} }
+@keyframes signal-breathe { from { transform:translateY(-4px) scaleY(.94); } to { transform:translateY(5px) scaleY(1.05); } }
+@media(prefers-reduced-motion:reduce) { .signal-strand,.signal-packet { animation:none; } }
