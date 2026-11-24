@@ -1,0 +1,142 @@
+.resume-section {
+  --resume-mono: var(--font-mono, "JetBrains Mono", Consolas, monospace);
+  --resume-accent: #8e8eea;
+  --resume-line: rgba(169, 205, 190, .16);
+  color: #f2f2f6;
+  scroll-margin-top: 6rem;
+}
+
+.resume-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.resume-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4.6vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -.055em;
+}
+
+.resume-tabs {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  align-items: center;
+  gap: .2rem;
+  padding: .25rem;
+  background: #0e1018;
+  border: 1px solid var(--resume-line);
+  border-radius: .6rem;
+}
+
+.resume-tabs button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: .6rem .8rem;
+  min-height: 40px;
+  color: #b4b4c6;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: .4rem;
+  font-family: inherit;
+  font-size: .83rem;
+  font-weight: 500;
+  line-height: 1.25;
+  cursor: pointer;
+}
+.resume-tabs button:hover { color: #fff; }
+.resume-tabs button[aria-selected="true"] { background: #202333; color: var(--resume-accent); border-color: #2f354d; }
+.resume-section :focus-visible { outline: 2px solid var(--resume-accent); outline-offset: -2px; }
+
+.resume-panel {
+  border: 1px solid var(--resume-line);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(120deg, #11141d, #0d0e15 60%);
+}
+.resume-panel[hidden], .resume-editor [hidden] { display: none; }
+
+.resume-rail {
+  margin: 0;
+  padding: clamp(1.25rem, 3.5vw, 3rem);
+  list-style: none;
+}
+.resume-rail > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  gap: clamp(.8rem, 2vw, 1.8rem);
+}
+.resume-rail > li:not(:last-child) { padding-bottom: 2rem; }
+.resume-rail > li:not(:last-child)::before {
+  position: absolute;
+  content: "";
+  left: 1.17rem;
+  top: 2.4rem;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, #474d65, #24283a);
+}
+.resume-station {
+  display: grid;
+  place-items: center;
+  height: 2.4rem;
+  width: 2.4rem;
+  color: var(--resume-accent);
+  background: #181b27;
+  border: 1px solid #313750;
+  border-radius: .65rem;
+}
+.resume-rail h3 {
+  margin: .45rem 0 .55rem;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  font-weight: 550;
+  line-height: 1.25;
+  letter-spacing: -.035em;
+}
+.resume-rail p, .resume-impact { margin: 0; color: #b7b7c9; font-size: .95rem; line-height: 1.6; }
+.resume-rail .resume-meta {
+  margin-top: .1rem;
+  font: 500 .68rem/1.5 var(--resume-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--resume-accent);
+}
+.resume-rail .resume-small { margin-top: .2rem; font-size: .82rem; }
+.resume-impact { max-width: 76ch; padding-left: 1.1rem; list-style: disc; }
+.resume-impact li { margin: .3rem 0; }
+.resume-impact li::marker { color: #6c728f; }
+.resume-editor { min-width: 0; background: #0e0f16; }
+.resume-editor .resume-tabs { border: 0; border-bottom: 1px solid var(--resume-line); border-radius: 0; padding: .6rem; }
+.resume-editor button { font-family: var(--resume-mono); font-size: .75rem; }
+.resume-source {
+  margin: 0;
+  max-height: 29rem;
+  overflow: auto;
+  padding: 1.3rem 0;
+  color: #c6c6d4;
+  background: #0e0f16;
+  white-space: pre-wrap;
+  tab-size: 2;
+}
+.resume-source code { font: .79rem/1.8 var(--resume-mono); }
+.resume-line { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); padding-right: 1.25rem; overflow-wrap: anywhere; }
+.resume-line-number { padding-right: 1.15rem; color: #797f9a; text-align: right; user-select: none; }
+.resume-token-keyword { color: #c6aafa; }
+.resume-token-key { color: #90cfff; }
+.resume-token-string { color: #9191dc; }
+
+@media (max-width: 480px) {
+  .resume-editor .resume-tabs { gap: .1rem; padding: .3rem; }
+  .resume-editor button { padding: .45rem .35rem; font-size: .68rem; gap: .25rem; }
+  .resume-line { grid-template-columns: 2.55rem minmax(0, 1fr); }
+}

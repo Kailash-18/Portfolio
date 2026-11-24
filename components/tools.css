@@ -1,0 +1,58 @@
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-space);
+  margin-top: var(--heading-space);
+}
+.tool-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--panel-space);
+  border: 1px solid #39435f;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #1b253d, #141729);
+}
+.tool-stage { min-width: 0; perspective: 1000px; }
+.tool-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--tool-light-x, 50%) var(--tool-light-y, 50%), #b2a2fa33, transparent 56%);
+  opacity: 0;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .tool-card {
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tool-tilt-x, 0deg)) rotateY(var(--tool-tilt-y, 0deg));
+    transition: transform .23s ease-out, border-color .23s ease, box-shadow .23s ease;
+  }
+  .tool-card::before { transition: opacity .25s ease; }
+  .tool-icon { transition: transform .23s ease-out; }
+  .tool-stage:hover .tool-card {
+    border-color: #968bc9;
+    box-shadow: 0 14px 30px #05071470;
+  }
+  .tool-stage:hover .tool-card::before { opacity: 1; }
+  .tool-stage:hover .tool-icon { transform: translateZ(27px); }
+}
+.tool-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
+  color: #d2bfff;
+  background: #30274e;
+}
+.tool-card h3 { margin: 13px 0 8px; font-size: 1.18rem; font-weight: 600; }
+.tool-card p { color: #c2c9dc; font-size: .94rem; line-height: 1.6; }
+.tool-card ul { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 15px 0; }
+.tool-card li { padding: 3px 8px; border-radius: 5px; background: #212b48; color: #dddcfa; font: .74rem var(--font-mono); }
+.tool-card a { color: #d5c7ff; font-size: .84rem; margin-top: auto; text-decoration: underline; text-underline-offset: 4px; }
+.portfolio-masthead .intro-social a.masthead-tools { width: auto; padding-inline: .65rem; }
+@media (max-width: 800px) { .tool-grid { grid-template-columns: 1fr; } }
