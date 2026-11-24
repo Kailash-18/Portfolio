@@ -1,0 +1,18 @@
+.system-topology { color:var(--chapter-accent); max-width:38rem; justify-self:center; background:linear-gradient(125deg,color-mix(in srgb,var(--chapter-accent) 12%,transparent),#606cca0e 60%,#c967e816); }
+.system-topology .topology-scroll > svg { min-width:470px; }
+.system-topology .scene-kicker { font:600 11px var(--font-mono); fill:var(--chapter-accent); letter-spacing:.1em; }
+.system-topology .scene-label { font-size:14px; font-weight:550; }
+.scene-track,.scene-guide,.scene-waveform,.scan-line { stroke:currentColor; fill:none; }
+.scene-track { opacity:.56; stroke-width:1.6; }
+.scene-guide { stroke-dasharray:4 6; opacity:.46; }
+.scene-solid { fill:color-mix(in srgb,var(--chapter-accent) 17%,#141c32aa); stroke:currentColor; stroke-width:1.4; }
+.scene-signal { stroke:currentColor; stroke-width:3; stroke-dasharray:7 93; filter:drop-shadow(0 0 3px currentColor); }
+.scan-line { stroke-width:2; }
+@media(prefers-reduced-motion:no-preference) {
+  .scene-signal { animation:topology-signal 3s linear infinite; }
+  .mesh-float { animation:mesh-float 4s ease-in-out infinite alternate; }
+  .scan-line { animation:qa-scan 3s ease-in-out infinite alternate; }
+  .builds-page[data-motion-paused="true"] :is(.scene-signal,.mesh-float,.scan-line) { animation-play-state:paused; }
+  @keyframes mesh-float { to { transform:translateY(-3px) rotate(1.5deg); } }
+  @keyframes qa-scan { to { transform:translateY(109px); } }
+}
