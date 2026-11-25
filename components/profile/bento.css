@@ -44,8 +44,10 @@
 .bento-person h3 { font-size: 1.15rem; letter-spacing: -.025em; font-weight: 600; }
 .bento-person a { display: inline-flex; align-items: center; gap: .3rem; color: var(--b-muted); font: .74rem var(--b-mono); text-decoration: none; }
 .bento-person a:hover { color: var(--b-accent); }
-.bento-bio { cursor: pointer; transition: border-color .2s ease, transform .2s ease; }
-.bento-bio:hover { border-color: #7777c7; transform: translateY(-2px); }
+.bento-bio { cursor: pointer; transition: border-color .28s ease, transform .32s cubic-bezier(.2,.8,.2,1), box-shadow .32s ease, background .32s ease; }
+.bento-bio:hover { border-color: #7777c7; transform: translateY(-4px) scale(1.008); box-shadow: 0 14px 36px #7878d326, inset 0 1px #b9b4ff28; background: linear-gradient(120deg,#171a29,#111522); }
+.bento-bio .bento-avatar { transition: transform .32s cubic-bezier(.2,.8,.2,1), box-shadow .32s ease; }
+.bento-bio:hover .bento-avatar { transform: scale(1.06); box-shadow: 0 0 0 4px #9691e51a; }
 .bento-bio:focus-within { outline: 2px solid var(--b-accent); outline-offset: 3px; }
 .bento-card .bento-bio-text { margin: 1.2rem 0 .6rem; font-size: clamp(1.05rem, 1.8vw, 1.3rem); line-height: 1.5; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .bento-bio-note, .bento-skill-note, .bento-pulse-note { color: var(--b-muted); font-size: .88rem; line-height: 1.65; }
@@ -179,6 +181,7 @@
   88%, 100% { transform: translateX(102%); }
 }
 @media (prefers-reduced-motion: reduce) { .bento-status i { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .bento-bio, .bento-bio .bento-avatar { transition: none; } .bento-bio:hover, .bento-bio:hover .bento-avatar { transform: none; } }
 @media (max-width: 850px) {
   .bento-github { grid-template-columns: minmax(0, 1fr); }
   .bento-location { grid-column: span 2; }

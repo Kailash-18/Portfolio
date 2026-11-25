@@ -162,8 +162,8 @@ export default function BentoGrid() {
               </a>
             </div>
           </div>
-          <p className="bento-bio-text">{profile.bio || "At IIIT Bhagalpur, I split my time between electronics and the software that runs on it."}</p>
-          <p className="bento-bio-note">I write infrastructure changes in Terraform and track Kubernetes releases in Git.</p>
+          <p className="bento-bio-text">Electronics engineering student at IIIT Bhagalpur, focused on cloud infrastructure, platform delivery, and practical security.</p>
+          <p className="bento-bio-note">I provision repeatable systems with Terraform, ship workloads through Kubernetes, and investigate network and web traffic in controlled labs.</p>
         </article>
         <article className="bento-card bento-github">
           <div className="bento-pulse-header">
