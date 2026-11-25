@@ -145,7 +145,10 @@ export default function BentoGrid() {
     <section id="about" className="bento-section" aria-labelledby="about-heading">
       <h2 id="about-heading">Engineering profile</h2>
       <div className="bento-layout">
-        <article className="bento-card bento-bio">
+        <article className="bento-card bento-bio" onClick={event => {
+          if ((event.target as Element).closest("a, button")) return;
+          window.open(profile.html_url || resumeProfile.github, "_blank", "noopener,noreferrer");
+        }}>
           <div className="bento-person">
             <div className="bento-avatar">
               <span aria-hidden>KA</span>

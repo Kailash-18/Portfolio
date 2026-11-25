@@ -44,6 +44,9 @@
 .bento-person h3 { font-size: 1.15rem; letter-spacing: -.025em; font-weight: 600; }
 .bento-person a { display: inline-flex; align-items: center; gap: .3rem; color: var(--b-muted); font: .74rem var(--b-mono); text-decoration: none; }
 .bento-person a:hover { color: var(--b-accent); }
+.bento-bio { cursor: pointer; transition: border-color .2s ease, transform .2s ease; }
+.bento-bio:hover { border-color: #7777c7; transform: translateY(-2px); }
+.bento-bio:focus-within { outline: 2px solid var(--b-accent); outline-offset: 3px; }
 .bento-card .bento-bio-text { margin: 1.2rem 0 .6rem; font-size: clamp(1.05rem, 1.8vw, 1.3rem); line-height: 1.5; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .bento-bio-note, .bento-skill-note, .bento-pulse-note { color: var(--b-muted); font-size: .88rem; line-height: 1.65; }
 .bento-card .bento-label { display: flex; align-items: center; gap: .55rem; margin: 0; font-size: 1rem; font-weight: 550; line-height: 1.4; letter-spacing: -.02em; }
