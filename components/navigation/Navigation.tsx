@@ -2,6 +2,7 @@
 
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { profile } from "../../lib/profile/resume";
 
 export const navigation = [
@@ -9,8 +10,15 @@ export const navigation = [
 ] as const;
 
 export default function Navigation({ builds = false }: { builds?: boolean }) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 48);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
   return (
-    <header className="portfolio-masthead">
+    <header className="portfolio-masthead" data-scrolled={scrolled}>
       <div>
         <a className="masthead-home" href="#top" aria-label="Back to top" onClick={(event) => {
           event.preventDefault();

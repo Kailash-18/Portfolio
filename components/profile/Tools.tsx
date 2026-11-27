@@ -40,7 +40,7 @@ function tiltToolCard(event: PointerEvent<HTMLDivElement>) {
 export default function Tools() {
   return (
     <section id="tools" className="tool-section" aria-labelledby="tools-title">
-      <h2 id="tools-title">Engineering toolkit</h2>
+      <h2 id="tools-title">Hands-on experience</h2>
       <div className="tool-grid">
         {spotlights.map(({ title, icon: Icon, description, tools }) => (
           <div key={title} className="tool-stage" onPointerMove={tiltToolCard} onPointerLeave={event => {

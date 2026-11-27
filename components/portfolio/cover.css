@@ -263,3 +263,12 @@ html:has(.portfolio-masthead) { scroll-padding-top: 90px; }
 }
 @media (min-width: 721px) { .intro h1 span { font-size: .98em; letter-spacing: -.065em; } .portfolio-masthead > div { width: min(calc(100% - 2 * var(--gutter)), calc(var(--page-rail) * 1.05)); } }
 @media (prefers-reduced-motion: no-preference) { .portfolio-masthead > div { animation: masthead-arrive .6s cubic-bezier(.2,.8,.2,1) both; transition: background .35s ease, box-shadow .35s ease, border-color .35s ease; } @keyframes masthead-arrive { from { opacity: .65; transform: translateY(-10px) scale(.985); } to { opacity: 1; transform: none; } } }
+@media (min-width: 900px) {
+  .intro-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(2rem, 4vw, 4rem); }
+  .intro-copy { max-width: 650px; }
+  .engineering-index { width: 100%; align-self: center; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-masthead > div { animation: none; transform-origin: center top; transition: transform .28s cubic-bezier(.2,.8,.2,1), background .28s ease, box-shadow .28s ease; }
+  .portfolio-masthead[data-scrolled="true"] > div { transform: translateY(-3px) scale(.985); background: linear-gradient(145deg, #25284683, #101323a8); box-shadow: 0 16px 40px #04050aa3, inset 0 1px #ffffff56; }
+}
