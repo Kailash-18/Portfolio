@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { browserCookie, browserMaxAge, requesterStatus, submitRequest } from "../../../lib/resume/resume-access";
 import { json, readForm, sessionCookie } from "../../../lib/resume/resume-http";
+import { notifyResumeView } from "../../../lib/resume/resume-notifications";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,8 +19,13 @@ export async function POST(request: NextRequest) {
   }
   const result = submitRequest(name, request.cookies.get(browserCookie)?.value);
   if (result.error) return json({ error: "Too many requests. Please try again in an hour." }, 429);
-  if (result.current) return json(result.current);
+  if (result.current) {
+    const sessionToken = request.cookies.get(browserCookie)?.value;
+    if (sessionToken) void notifyResumeView(sessionToken);
+    return json(result.current);
+  }
   const response = json(requesterStatus(result.value), 201);
   response.cookies.set(browserCookie, result.value, sessionCookie(request, browserMaxAge));
+  void notifyResumeView(result.value);
   return response;
 }

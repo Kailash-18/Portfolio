@@ -2,10 +2,13 @@
   "name": "kailash-portfolio",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
     "owner:access": "node scripts/owner-access.mjs",
+    "test:access": "node scripts/check-resume-access.mjs",
+    "test:smtp": "node scripts/test-smtp.mjs",
     "build": "next build",
     "typecheck": "tsc --noEmit"
   },

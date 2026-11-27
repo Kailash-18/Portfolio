@@ -32,8 +32,8 @@ export default function Navigation({ builds = false }: { builds?: boolean }) {
         </a>
         <div className="intro-social">
           <Link className="masthead-tools" href={builds ? "/" : "/builds"}>{builds ? "Portfolio" : "What I Build"}</Link>
-          <a href={profile.github} aria-label="GitHub" title="GitHub"><Github size={20} /></a>
-          <a href={profile.linkedin} aria-label="LinkedIn" title="LinkedIn"><Linkedin size={20} /></a>
+          <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><Github size={20} /></a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><Linkedin size={20} /></a>
           <a href={`mailto:${profile.email}`} aria-label="Email" title="Email"><Mail size={20} /></a>
         </div>
       </div>

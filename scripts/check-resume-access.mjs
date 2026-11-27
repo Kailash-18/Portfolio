@@ -35,7 +35,7 @@ async function request(jar, route, expected, body, requestOrigin = origin) {
   }
   return response;
 }
-const submit = (jar, name) => request(jar, "/api/resume", 201, { name, email: "example@example.com" });
+const submit = (jar, name) => request(jar, "/api/resume", 201, { name });
 const action = (jar, status, body) => request(jar, "/api/resume/owner", status, body);
 const documentRoute = "/api/resume/file";
 try {
@@ -52,13 +52,13 @@ try {
   await request(visitor, "/private/Kailash-Ambadipudi-Resume.pdf", 404);
   await request(visitor, documentRoute, 403);
   await request(visitor, "/api/resume/owner", 401);
-  for (const email of ["visitor", "visitor..test@example.com", "visitor@-example.com", "visitor@example..com"]) {
-    await request(visitor, "/api/resume", 400, { name: "Visitor", email });
+  for (const name of ["", "   ", "a".repeat(101), "invalid\x00name"]) {
+    await request(visitor, "/api/resume", 400, { name });
     await request(visitor, documentRoute, 403);
   }
-  await request(visitor, "/api/resume", 403, { name: "Visitor", email: "example@example.com" }, "https://other.example");
+  await request(visitor, "/api/resume", 403, { name: "Visitor" }, "https://other.example");
   assert.equal((await (await submit(visitor, "Visitor")).json()).status, "approved");
-  await request(visitor, "/api/resume", 200, { name: "Visitor", email: "example@example.com" });
+  await request(visitor, "/api/resume", 200, { name: "Visitor" });
   await request(visitor, documentRoute, 200);
   const stdout = execFileSync(process.execPath, ["scripts/owner-access.mjs"], { cwd: root, env, encoding: "utf8" });
   const code = stdout.trim().split(/\s+/).at(-1);

@@ -121,16 +121,16 @@ export function requesterStatus(value?: string): RequestStatus {
   return currentStatus({ status: row.status as Status, expiresAt: Number(row.expiresAt) });
 }
 
-export function claimResumeView(value?: string) {
+export function claimResumeView(value?: string, throttleMs = 60_000) {
   if (!validToken(value)) return;
   const now = Date.now();
   const claim = store().prepare(`
-    INSERT INTO resumeViewNotifications(requestId, claimedAt)
-    SELECT id, ? FROM requests WHERE browserHash = ? AND status = 'approved' AND expiresAt > ?
-    ON CONFLICT(requestId) DO UPDATE SET claimedAt = excluded.claimedAt
-    WHERE published = 0 AND claimedAt < ?
+    INSERT INTO resumeViewNotifications(requestId, claimedAt, published)
+    SELECT id, ?, 0 FROM requests WHERE browserHash = ? AND status = 'approved' AND expiresAt > ?
+    ON CONFLICT(requestId) DO UPDATE SET claimedAt = excluded.claimedAt, published = 0
+    WHERE claimedAt < ?
     RETURNING requestId
-  `).get(now, digest(value), now, now - 60_000);
+  `).get(now, digest(value), now, now - throttleMs);
   return typeof claim?.requestId === "string" ? claim.requestId : undefined;
 }
 

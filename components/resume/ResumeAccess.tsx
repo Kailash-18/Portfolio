@@ -31,8 +31,17 @@ function AccessPage({ children, owner = false }: { children: ReactNode; owner?: 
 }
 
 export function ResumeRequest() {
-  const [busy,setBusy] = useState(false);
-  const [error,setError] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    void read<RequestStatus>("/api/resume").then((status) => {
+      if (status?.status === "approved") {
+        window.location.replace("/api/resume/file");
+      }
+    }).catch(() => {});
+  }, []);
+
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const fields = new FormData(event.currentTarget);

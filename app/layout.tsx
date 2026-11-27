@@ -8,7 +8,11 @@ export const metadata: Metadata = {
   title: "Kailash Ambadipudi",
   description: "Explore Kailash Ambadipudi’s interactive signal studio, cloud infrastructure projects and DevOps case studies.",
 };
-export const viewport: Viewport = { themeColor: "#090d0f" };
+export const viewport: Viewport = {
+  themeColor: "#090d0f",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   // Browser extensions can attach their own attributes to the root before hydration.

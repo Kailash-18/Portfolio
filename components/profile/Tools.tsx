@@ -46,6 +46,8 @@ export default function Tools() {
           <div key={title} className="tool-stage" onPointerMove={tiltToolCard} onPointerLeave={event => {
             event.currentTarget.style.removeProperty("--tool-tilt-x");
             event.currentTarget.style.removeProperty("--tool-tilt-y");
+            event.currentTarget.style.removeProperty("--tool-light-x");
+            event.currentTarget.style.removeProperty("--tool-light-y");
           }}>
             <article className="tool-card">
               <span className="tool-icon"><Icon size={22} aria-hidden="true" /></span>

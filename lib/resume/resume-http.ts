@@ -14,8 +14,9 @@ export function json(value: unknown, status = 200) {
 
 function originFor(request: NextRequest) {
   if (process.env.RESUME_ACCESS_ORIGIN) return new URL(process.env.RESUME_ACCESS_ORIGIN).origin;
-  const host = request.headers.get("host");
-  return host ? request.nextUrl.protocol + "//" + host : request.nextUrl.origin;
+  const host = request.headers.get("x-forwarded-host") || request.headers.get("host");
+  const proto = request.headers.get("x-forwarded-proto") || request.nextUrl.protocol.replace(":", "");
+  return host ? `${proto}://${host}` : request.nextUrl.origin;
 }
 
 export function sessionCookie(request: NextRequest, maxAge: number) {

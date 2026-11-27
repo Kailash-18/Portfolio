@@ -20,7 +20,15 @@ export async function GET(request: NextRequest) {
   } catch {
     return json({ error: "The résumé is not configured on this server." }, 503);
   }
-  if (request.method === "GET") after(() => notifyResumeView(session));
+  if (request.method === "GET") {
+    after(async () => {
+      try {
+        await notifyResumeView(session);
+      } catch (err) {
+        console.error("[Resume Alert] Background delivery error:", err);
+      }
+    });
+  }
   return new Response(new Uint8Array(pdf), { headers: {
     ...privateHeaders, "Content-Type": "application/pdf",
     "Content-Disposition": 'inline; filename="Kailash-Ambadipudi-Resume.pdf"',
