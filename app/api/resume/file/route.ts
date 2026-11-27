@@ -12,7 +12,7 @@ export const runtime = "nodejs";
 export async function GET(request: NextRequest) {
   const session = request.cookies.get(browserCookie)?.value;
   if (requesterStatus(session).status !== "approved") {
-    return json({ error: "Enter your name and email at /resume to view the PDF." }, 403);
+    return json({ error: "Enter your name at /resume to view the PDF." }, 403);
   }
   let pdf: Buffer;
   try {

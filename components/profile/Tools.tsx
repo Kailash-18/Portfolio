@@ -10,24 +10,18 @@ const spotlights = [
     icon: Network,
     tools: ["OPNsense", "Wireshark", "Nmap", "Nessus", "Metasploit", "Ettercap"],
     description: "I compare OPNsense firewall rules with Wireshark captures, then check Nessus findings against the services Nmap identifies. My penetration-testing experience also includes Metasploit Framework.",
-    link: "Explore security skills",
-    href: "#security",
   },
   {
     title: "HTTP analysis & web security",
     icon: AppWindow,
     tools: ["Burp Suite", "OWASP Juice Shop", "VirtualBox"],
     description: "In OWASP Juice Shop, I used Burp Suite to inspect requests and responses at the HTTP layer. I focused on where browser-side checks end and server-side validation begins, and how response status and body changes reflect the application’s handling of input.",
-    link: "Explore security skills",
-    href: "#security",
   },
   {
     title: "Cloud and delivery",
     icon: Cloud,
     tools: ["Terraform", "AWS", "Jenkins", "Kubernetes", "Argo CD"],
     description: "I use Terraform to define AWS infrastructure and Jenkins to build and test container releases. My GitOps project uses Argo CD to keep Kubernetes workloads in sync with Git.",
-    link: "Explore the AWS project",
-    href: "#work",
   },
 ];
 
@@ -46,9 +40,9 @@ function tiltToolCard(event: PointerEvent<HTMLDivElement>) {
 export default function Tools() {
   return (
     <section id="tools" className="tool-section" aria-labelledby="tools-title">
-      <h2 id="tools-title">Tools in practice</h2>
+      <h2 id="tools-title">Engineering toolkit</h2>
       <div className="tool-grid">
-        {spotlights.map(({ title, icon: Icon, description, tools, link, href }) => (
+        {spotlights.map(({ title, icon: Icon, description, tools }) => (
           <div key={title} className="tool-stage" onPointerMove={tiltToolCard} onPointerLeave={event => {
             event.currentTarget.style.removeProperty("--tool-tilt-x");
             event.currentTarget.style.removeProperty("--tool-tilt-y");
@@ -58,7 +52,6 @@ export default function Tools() {
               <h3>{title}</h3>
               <p>{description}</p>
               <ul aria-label="Tools used">{tools.map(tool => <li key={tool}>{tool}</li>)}</ul>
-              <a href={href}>{link}</a>
             </article>
           </div>
         ))}

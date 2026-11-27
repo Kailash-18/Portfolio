@@ -119,3 +119,4 @@
   .security-scene { height: 270px; }
   .security-model { width: 145px; --lift: 26px; }
 }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .security-panel { transition: border-color .35s ease, box-shadow .35s ease; } .security-panel:hover { border-color: #9b8bd3; box-shadow: 0 22px 60px #22184850; } .security-model { transition: transform .65s cubic-bezier(.2,.8,.2,1), filter .65s ease; } .security-panel:hover .security-model { filter: drop-shadow(0 18px 24px #a28aff45); } .security-layer { transition: border-color .3s ease, background-color .3s ease, box-shadow .3s ease; } .security-panel:hover .security-layer[data-active="true"] { box-shadow: 0 8px 0 #271e46, 0 0 48px #a38affaa; } }

@@ -39,13 +39,12 @@ export function ResumeRequest() {
     setBusy(true);
     setError("");
     try {
-      await read<RequestStatus>("/api/resume",{name:fields.get("name"),email:fields.get("email")});
+      await read<RequestStatus>("/api/resume",{name:fields.get("name")});
       window.location.replace("/api/resume/file");
     } catch(e) {setError(failure(e));setBusy(false);}
   }
-  return <AccessPage><h1>View my résumé<span>.</span></h1><p>Enter your name and email to open the PDF. Your details are saved privately for Kailash.</p>
+  return <AccessPage><h1>View my résumé<span>.</span></h1><p>Enter your name to open my résumé. I receive a private notification when it is viewed.</p>
     <form onSubmit={submit}><label>Your name<input name="name" autoComplete="name" maxLength={100} required/></label>
-    <label>Your email<input name="email" type="email" autoComplete="email" maxLength={254} required/></label>
     <button disabled={busy} className="access-primary"><FileText size={16}/>{busy?"Opening…":"View résumé"}</button></form>
     {error && <p role="alert" className="access-error">{error}</p>}</AccessPage>;
 }
@@ -84,11 +83,11 @@ export function ResumeOwner() {
       <form onSubmit={login}><label>Owner code<input type="password" name="code" autoComplete="one-time-code" required /></label>
         <button className="access-primary" disabled={busy}><KeyRound size={16}/>Sign in</button></form></>}
     {state?.signedIn && <>
-      <p>Review the name and email supplied by each visitor. Approval opens the PDF in the requesting browser for 24 hours.</p>
+      <p>Review résumé visits by name. The PDF opens as soon as a visitor submits the form.</p>
       <div className="access-actions"><button className="access-secondary" onClick={refresh} disabled={busy}><RefreshCw size={15}/>Refresh list</button><button className="access-secondary" disabled={busy} onClick={() => act({ action: "logout" })}>Sign out</button></div>
       {!state.requests?.length && <p className="access-empty">No requests yet.</p>}
       <ul className="access-list">{state.requests?.map(row => <li key={row.id}>
-        <h2>{row.name}</h2><div className="access-identity">{row.email}</div>
+        <h2>{row.name}</h2>
         <div className="access-metadata"><span>{row.status}</span><small>Requested {date(row.createdAt)}</small></div>
         {(row.status === "pending" || row.status === "approved") && <div className="access-actions">
           {(row.status === "pending" ? ["approve", "deny"] : ["revoke"]).map(action => <button className={action === "approve" ? "access-primary" : "access-secondary"} disabled={busy} key={action}

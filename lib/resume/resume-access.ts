@@ -139,15 +139,15 @@ export function finishResumeView(requestId: string, published: boolean) {
     .run(Number(published), published ? Date.now() : 0, requestId);
 }
 
-export function submitRequest(name: string, email: string, previous?: string) {
+export function submitRequest(name: string, previous?: string) {
   return transaction(db => {
     const current = requesterStatus(previous);
-    if (current.status === "approved" && previous && db.prepare("SELECT 1 FROM requests WHERE browserHash=? AND name=? AND email=?").get(digest(previous), name, email)) return { current } as const;
+    if (current.status === "approved" && previous && db.prepare("SELECT 1 FROM requests WHERE browserHash=? AND name=?").get(digest(previous), name)) return { current } as const;
     if (!consumeAttempt(db, "request", hour, 40)) return { error: "limited" } as const;
     const value = token();
     const now = Date.now();
     db.prepare("INSERT INTO requests VALUES (?, ?, ?, ?, ?, 'approved', ?)").run(
-      randomBytes(16).toString("hex"), digest(value), name, email, now, now + day,
+      randomBytes(16).toString("hex"), digest(value), name, "", now, now + day,
     );
     return { value } as const;
   });
@@ -171,3 +171,5 @@ export function decide(id: string, decision: Decision) {
   `).run(next, next, now + day, id, expected, now);
   return result.changes === 1;
 }
+
+export function resumeViewerName(requestId: string) { const row = store().prepare("SELECT name FROM requests WHERE id = ?").get(requestId); return typeof row?.name === "string" ? row.name : undefined; }

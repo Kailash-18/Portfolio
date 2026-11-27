@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { claimResumeView, finishResumeView } from "./resume-access";
+import { claimResumeView, finishResumeView, resumeViewerName } from "./resume-access";
 import { profile } from "../profile/resume";
 
 export async function notifyResumeView(session?: string) {
@@ -26,7 +26,7 @@ export async function notifyResumeView(session?: string) {
       to: RESUME_ALERT_TO || profile.email,
       subject: "Someone opened your résumé",
       text: [
-        "A visitor opened the résumé PDF through your portfolio.",
+        `Visitor: ${resumeViewerName(requestId) || "Name unavailable"}`,
         `Time: ${new Date().toISOString()}`,
         `Request ID: ${requestId}`,
         "View the visitor details in your private résumé dashboard (/resume-admin).",
