@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Kailash Ambadipudi",
-  description: "Explore Kailash Ambadipudi’s interactive signal studio, cloud infrastructure projects and DevOps case studies.",
+  description: "Explore Kailash Ambadipudi’s interactive signal studio, multi-cloud infrastructure projects and DevOps case studies.",
 };
 export const viewport: Viewport = {
   themeColor: "#090d0f",

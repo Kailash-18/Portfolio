@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type PointerEvent } from "react";
 import { ArrowDown, ArrowUpRight, FileText, Layers3, Radio, X } from "lucide-react";
 import Link from "next/link";
 import { profile } from "../../lib/profile/resume";
@@ -10,8 +10,18 @@ import "./cover.css";
 const focusAreas = [
   ["Network security", "OPNsense · Wireshark", "Firewall policy and packet-level traffic analysis"],
   ["Web security", "Burp Suite · OWASP Juice Shop", "HTTP inspection and input validation in training environments"],
-  ["Cloud & delivery", "Terraform · Kubernetes", "Repeatable AWS infrastructure and application releases"],
+  ["Multi-cloud & delivery", "Terraform · Kubernetes", "Repeatable multi-cloud infrastructure (AWS, Azure, GCP) and application releases"],
 ];
+
+function tiltIndex(event: PointerEvent<HTMLElement>) {
+  if (event.pointerType !== "mouse" || !matchMedia("(prefers-reduced-motion: no-preference)").matches) return;
+  const surface = event.currentTarget;
+  const bounds = surface.getBoundingClientRect();
+  const x = (event.clientX - bounds.left) / bounds.width;
+  const y = (event.clientY - bounds.top) / bounds.height;
+  surface.style.setProperty("--hero-light-x", `${x * 100}%`);
+  surface.style.setProperty("--hero-light-y", `${y * 100}%`);
+}
 
 export default function Hero() {
   const [interactive, setInteractive] = useState(false);
@@ -28,16 +38,24 @@ export default function Hero() {
     <section id="home" className="intro" aria-labelledby="cover-title">
       <div className="intro-grid">
         <div className="intro-copy">
-          <p className="intro-role">Security, cloud infrastructure &amp; DevOps</p>
+          <p className="intro-role">Security, multi-cloud infrastructure &amp; DevOps</p>
           <h1 id="cover-title">Kailash <span>Ambadipudi</span></h1>
-          <p className="intro-description">I study electronics and communication engineering at IIIT Bhagalpur. My work spans network traffic analysis, web application security training, and AWS infrastructure and Kubernetes delivery.</p>
+          <p className="intro-description">I study electronics and communication engineering at IIIT Bhagalpur. My work spans network traffic analysis, web application security training, and multi-cloud infrastructure (AWS, Azure, GCP) with Kubernetes delivery.</p>
           <div className="intro-actions">
             <a className="intro-primary" href="#work">Explore work <ArrowDown size={16} aria-hidden /></a>
             <a className="intro-secondary" href={profile.resume}><FileText size={16} aria-hidden /> View résumé</a>
             <Link className="intro-secondary" href="/builds"><Layers3 size={16} aria-hidden /> What I Build</Link>
           </div>
         </div>
-        <aside className="engineering-index" aria-label="Engineering focus">
+        <aside
+          className="engineering-index"
+          aria-label="Engineering focus"
+          onPointerMove={tiltIndex}
+          onPointerLeave={event => {
+            event.currentTarget.style.removeProperty("--hero-light-x");
+            event.currentTarget.style.removeProperty("--hero-light-y");
+          }}
+        >
           <span className="intro-depth-layer" aria-hidden="true" />
           <div className="index-title"><Layers3 size={17} aria-hidden /> What I work on</div>
           <dl>

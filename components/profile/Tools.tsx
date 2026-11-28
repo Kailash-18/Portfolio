@@ -18,10 +18,10 @@ const spotlights = [
     description: "In OWASP Juice Shop, I used Burp Suite to inspect requests and responses at the HTTP layer. I focused on where browser-side checks end and server-side validation begins, and how response status and body changes reflect the application’s handling of input.",
   },
   {
-    title: "Cloud and delivery",
+    title: "Multi-cloud and delivery",
     icon: Cloud,
-    tools: ["Terraform", "AWS", "Jenkins", "Kubernetes", "Argo CD"],
-    description: "I use Terraform to define AWS infrastructure and Jenkins to build and test container releases. My GitOps project uses Argo CD to keep Kubernetes workloads in sync with Git.",
+    tools: ["Terraform", "AWS", "Azure", "GCP", "Kubernetes", "Argo CD"],
+    description: "I use Terraform to define multi-cloud infrastructure across AWS, Azure, and GCP, and Jenkins to build and test container releases. My GitOps project uses Argo CD to keep Kubernetes workloads in sync with Git.",
   },
 ];
 

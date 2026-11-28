@@ -61,9 +61,20 @@
   background: linear-gradient(115deg, #12141d, #0e0f16);
   transition: border-color .2s, transform .2s;
 }
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 50%), #b2a2fa20, transparent 56%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  z-index: 2;
+}
 .project-card:hover, .project-card:focus-within { border-color: #595f79; transform: translateY(-2px); }
 .project-card:focus-within { outline: 2px solid var(--pc-accent); outline-offset: 3px; }
-.pc-copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: clamp(1.25rem, 2.2vw, 1.85rem); }
+.pc-copy { position: relative; z-index: 3; display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: clamp(1.25rem, 2.2vw, 1.85rem); }
 .pc-type { display: inline-flex; align-items: center; gap: .5rem; color: #acacc0; font: .77rem var(--pc-mono); text-transform: uppercase; letter-spacing: .1em; }
 .pc-type span { width: 1rem; height: 1px; background: var(--pc-accent); }
 .pc-copy h3 { margin: .65rem 0 .6rem; width: 100%; font-size: clamp(1.32rem,2.3vw,1.85rem); line-height: 1.12; font-weight: 550; letter-spacing: -.045em; }
@@ -272,12 +283,13 @@
 .project-stage .case-art { position: relative; isolation: isolate; }
 .project-stage .case-art::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(circle at var(--spot-x,50%) var(--spot-y,50%), #acb5ff45, transparent 58%);
+  background: radial-gradient(circle at var(--spot-x,50%) var(--spot-y,50%), #b2a2fa20, transparent 58%);
   opacity: 0; transition: opacity .27s ease;
 }
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
   .project-stage .project-card { transform: rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)); transition: transform .22s ease-out, border-color .22s ease; }
-  .project-stage:hover .case-art::before { opacity: 1; }
+  .project-stage:hover .project-card::before { opacity: 1; }
+  .project-stage:hover .case-art::before { opacity: 0.7; }
 }
 
 .work-more { display:block; margin:22px auto 0; padding:10px 17px; border:1px solid #70668f; border-radius:7px; color:#e1d8ff; background:#201d35; }

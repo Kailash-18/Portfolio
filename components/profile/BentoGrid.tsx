@@ -1,17 +1,32 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useState, type PointerEvent } from "react";
 import { Activity, ArrowUpRight, CircuitBoard, GitFork, Github, Globe2, MapPin, Star } from "lucide-react";
 import { useGitHub } from "../../lib/projects/github";
 import { profile as resumeProfile } from "../../lib/profile/resume";
 import "./bento.css";
 
+function tiltBentoCard(event: PointerEvent<HTMLElement>) {
+  if (event.pointerType !== "mouse" || !matchMedia("(prefers-reduced-motion: no-preference)").matches) return;
+  const card = event.currentTarget;
+  const bounds = card.getBoundingClientRect();
+  const x = (event.clientX - bounds.left) / bounds.width;
+  const y = (event.clientY - bounds.top) / bounds.height;
+  card.style.setProperty("--bento-light-x", `${x * 100}%`);
+  card.style.setProperty("--bento-light-y", `${y * 100}%`);
+}
+
+function clearBentoCard(event: PointerEvent<HTMLElement>) {
+  event.currentTarget.style.removeProperty("--bento-light-x");
+  event.currentTarget.style.removeProperty("--bento-light-y");
+}
+
 const toolsets = {
   Cloud: [
+    ["Multi-Cloud", "Provisioning and architecture across AWS, Microsoft Azure, and Google Cloud Platform."],
     ["AWS", "Hosted a three-tier application with EC2, a load balancer and a private RDS database."],
-    ["Terraform", "Codified AWS resources so infrastructure could be provisioned repeatedly."],
-    ["VPC", "Separated public and private subnets and configured routes and security groups."],
-    ["RDS", "Placed the database tier in private subnets with controlled application access."],
+    ["Terraform", "Codified cloud resources with IaC so infrastructure could be provisioned repeatedly."],
+    ["VPC & Networks", "Configured public and private subnets, security groups, and routing."],
   ],
   Delivery: [
     ["Docker", "Containerized the application for the cloud-native deployment platform."],
@@ -60,7 +75,7 @@ function SkillPanel() {
   const [selected, setSelected] = useState(0);
   const detailId = useId();
   return (
-    <article className="bento-card bento-skills">
+    <article className="bento-card bento-skills" onPointerMove={tiltBentoCard} onPointerLeave={clearBentoCard}>
       <h3 className="bento-label"><CircuitBoard aria-hidden size={16} />Tech stack</h3>
       <div className="bento-categories" role="group" aria-label="Skill category">
         {categories.map((name) => (
@@ -117,7 +132,7 @@ function LocationPanel({ location }: { location?: string | null }) {
     return () => window.clearInterval(timer);
   }, []);
   return (
-    <article className="bento-card bento-location">
+    <article className="bento-card bento-location" onPointerMove={tiltBentoCard} onPointerLeave={clearBentoCard}>
       <LocationDial time={time} />
       <h3 className="bento-label"><Globe2 aria-hidden size={16} />Location &amp; status</h3>
       <div className="bento-location-body">
@@ -145,7 +160,7 @@ export default function BentoGrid() {
     <section id="about" className="bento-section" aria-labelledby="about-heading">
       <h2 id="about-heading">Engineering profile</h2>
       <div className="bento-layout">
-        <article className="bento-card bento-bio" onClick={event => {
+        <article className="bento-card bento-bio" onPointerMove={tiltBentoCard} onPointerLeave={clearBentoCard} onClick={event => {
           if ((event.target as Element).closest("a, button")) return;
           window.open(profile.html_url || resumeProfile.github, "_blank", "noopener,noreferrer");
         }}>
@@ -162,10 +177,10 @@ export default function BentoGrid() {
               </a>
             </div>
           </div>
-          <p className="bento-bio-text">Electronics engineering student at IIIT Bhagalpur, focused on cloud infrastructure, platform delivery, and practical security.</p>
+          <p className="bento-bio-text">Electronics engineering student at IIIT Bhagalpur, focused on multi-cloud infrastructure, platform delivery, and practical security.</p>
           <p className="bento-bio-note">I provision repeatable systems with Terraform, ship workloads through Kubernetes, and investigate network and web traffic in controlled labs.</p>
         </article>
-        <article className="bento-card bento-github">
+        <article className="bento-card bento-github" onPointerMove={tiltBentoCard} onPointerLeave={clearBentoCard}>
           <div className="bento-pulse-header">
             <h3 className="bento-label"><Activity aria-hidden size={16} />Repository activity</h3>
             <span className="bento-data-source">{source === "live" ? "Live" : source === "snapshot" ? "Snapshot" : "Résumé data"}</span>

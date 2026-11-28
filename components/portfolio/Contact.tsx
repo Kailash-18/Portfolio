@@ -13,7 +13,7 @@ export default function Contact() {
   const [drafted, setDrafted] = useState(false);
   return <><section id="contact" className="contact-section panel-section"><div>
     <span className="contact-icon"><Mail/></span><h2>Get in touch<span>.</span></h2>
-    <p>Have a cloud infrastructure project or a DevOps opportunity in mind? Send me a message.</p>
+    <p>Have a multi-cloud infrastructure project or a DevOps opportunity in mind? Send me a message.</p>
     <div className="contact-address"><a href={`mailto:${profile.email}`}>{profile.email}</a><button aria-label="Copy email address" title="Copy email" onClick={async () => { try { await copyEmail(); setCopied("Email copied."); } catch { setCopied("Select the email address to copy it."); } }}>{copied === "Email copied." ? <Check size={16}/> : <Copy size={16}/>}</button></div><span role="status">{copied}</span>
   </div><form onChange={() => setDrafted(false)} onSubmit={e => {
     e.preventDefault();

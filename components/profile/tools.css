@@ -22,7 +22,7 @@
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  background: radial-gradient(circle at var(--tool-light-x, 50%) var(--tool-light-y, 50%), #b2a2fa33, transparent 56%);
+  background: radial-gradient(circle at var(--tool-light-x, 50%) var(--tool-light-y, 50%), #b2a2fa20, transparent 56%);
   opacity: 0;
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -34,8 +34,8 @@
   .tool-card::before { transition: opacity .25s ease; }
   .tool-icon { transition: transform .23s ease-out; }
   .tool-stage:hover .tool-card {
-    border-color: #968bc9;
-    box-shadow: 0 14px 30px #05071470;
+    border-color: #8a7ebf;
+    box-shadow: 0 14px 30px #05071455;
   }
   .tool-stage:hover .tool-card::before { opacity: 1; }
   .tool-stage:hover .tool-icon { transform: translateZ(27px); }

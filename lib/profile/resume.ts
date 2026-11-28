@@ -1,7 +1,7 @@
 /** Professional information transcribed from the two supplied résumés. */
 export const profile = {
   name: "Kailash Ambadipudi",
-  focus: "Cloud and DevOps engineering",
+  focus: "Multi-cloud and DevOps engineering",
   email: "ambadipudikailash@gmail.com",
   github: "https://github.com/Kailash-18",
   linkedin: "https://www.linkedin.com/in/kailash-ambadipudi-b9235831a/",
